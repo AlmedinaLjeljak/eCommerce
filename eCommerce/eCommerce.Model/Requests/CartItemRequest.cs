@@ -9,7 +9,9 @@ namespace eCommerce.Model.Requests
 {
 	public class CartItemRequest
 	{
-		public int Quantity { get; set; } = 1;
+		public int Quantity { get; set; }
+		public DateTime? AddedAt { get; set; } = DateTime.Now;
+		public DateTime? UpdatedAt { get; set; }
 		public int CartId { get; set; }
 		public int ProductId { get; set; }
 

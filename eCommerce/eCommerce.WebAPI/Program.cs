@@ -17,6 +17,7 @@ builder.Services.AddTransient<IRoleService, RoleService>();
 builder.Services.AddTransient<IUnitOfMeasureService, UnitOfMeasureService>();
 builder.Services.AddTransient<ICartEventService, CartEventService>();
 builder.Services.AddTransient<ICartItemService, CartItemService>();
+builder.Services.AddTransient<ICartService, CartService>();
 
 builder.Services.AddTransient<BaseProductState>();
 builder.Services.AddTransient<InitialProductState>();

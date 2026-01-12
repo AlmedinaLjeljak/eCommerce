@@ -10,7 +10,7 @@ namespace eCommerce.Model.SearchObjects
 	{
 		public string? TipDogadjaj { get; set; }
 		public int? UserId { get; set; }
-		public DateTime? CreatedAt { get; set; }
-		public string? ProductName { get; set; }
+		public UserSearchObject? User { get; set; }
+
 	}
 }

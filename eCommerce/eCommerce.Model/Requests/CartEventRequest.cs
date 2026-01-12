@@ -8,7 +8,10 @@ namespace eCommerce.Model.Requests
 {
 	public class CartEventRequest
 	{
-		public string TipDogadjaj { get; set; }
+		public int? CartId { get; set; }
+		public int? CartItemId { get; set; }
+		public int? UserId { get; set; }
+		public string? TipDogadjaj { get; set; }
 		public DateTime? CreatedAt { get; set; }
 		public string? ProductName { get; set; }
 		public decimal? ProductPrice { get; set; }

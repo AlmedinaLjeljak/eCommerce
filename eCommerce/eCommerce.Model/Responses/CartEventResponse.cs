@@ -10,10 +10,13 @@ namespace eCommerce.Model.Responses
 	{
 		public int Id { get; set; }
 		public int? CartId { get; set; }
+		public CartResponse? Cart { get; set; }
 
 		public int? CartItemId { get; set; }
+		public CartItemResponse? CartItem { get; set; }
 
 		public int? UserId { get; set; }
+		public UserResponse? User { get; set; }
 
 		public string? TipDogadjaj { get; set; }
 		public DateTime? CreatedAt { get; set; }
