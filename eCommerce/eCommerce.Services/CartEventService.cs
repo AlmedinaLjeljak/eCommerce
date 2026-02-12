@@ -37,7 +37,6 @@ namespace eCommerce.Services
 			return cartEvent;
 		}
 		
-		
 		protected override IQueryable<CartEventIB190061> ApplyFilter(IQueryable<CartEventIB190061> query, CartEventSearchObject search)
 		{
 			if (!string.IsNullOrEmpty(search.TipDogadjaj))
@@ -50,9 +49,13 @@ namespace eCommerce.Services
 			{
 				query = query.Where(x => x.UserId == search.UserId.Value);
 			}
-			return query;
+			return query.Include(x => x.User).Include(x=>x.CartItem).ThenInclude(c=>c.Product).ThenInclude(f=>f.Assets);
+
+			
+
 			
 		}
+	
 		
 
 

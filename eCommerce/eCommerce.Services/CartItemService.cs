@@ -5,6 +5,7 @@ using eCommerce.Model.Requests;
 using eCommerce.Model.Responses;
 using eCommerce.Model.SearchObjects;
 using eCommerce.Services.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce.Services
 {
@@ -48,6 +49,11 @@ namespace eCommerce.Services
 
 			return MapToResponse(entity);
 		}
+	
+
+
+
+
 
 		// Prije brisanja logujemo događaj uklanjanja
 		protected override async Task BeforeDelete(CartItem entity)
@@ -63,6 +69,20 @@ namespace eCommerce.Services
 				cart.UserId
 			);
 		}
+		  
+
+
+
+
+
+
+
+
+
+
+
+
+
 	}
 }
 

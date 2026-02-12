@@ -1,6 +1,9 @@
+import 'package:ecommerce_mobile/screens/cartEvent.dart';
 import 'package:ecommerce_mobile/screens/cart_screen.dart';
+import 'package:ecommerce_mobile/screens/frmCartEvent.dart';
 import 'package:ecommerce_mobile/screens/product_details_screen.dart';
 import 'package:ecommerce_mobile/screens/product_list.dart';
+import 'package:ecommerce_mobile/screens/vjezba.dart';
 import 'package:flutter/material.dart';
 
 class MasterScreen extends StatefulWidget {
@@ -33,6 +36,12 @@ class _MasterScreenState extends State<MasterScreen> {
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProductDetailsScreen()));
             },), ListTile(title: Text('Cart'), onTap: () {
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CartScreen()));
+            },),
+            ListTile(title: Text('Moja vjezba'), onTap: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CartEventScreenVjezba()));
+            },),
+            ListTile(title: Text('CartEvent'), onTap: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CartEvenScreen()));
             },),
           ],
         ),

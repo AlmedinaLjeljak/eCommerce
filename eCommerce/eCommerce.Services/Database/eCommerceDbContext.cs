@@ -180,8 +180,27 @@ namespace eCommerce.Services.Database
                 .HasIndex(ur => new { ur.UserId, ur.RoleId })
                 .IsUnique();
 
+			modelBuilder.Entity<CartEventIB190061>()
+			   .HasOne(ce => ce.User)
+			   .WithMany()
+			   .HasForeignKey(ce => ce.UserId)
+			   .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Category>().HasData(
+			modelBuilder.Entity<CartEventIB190061>()
+				.HasOne(ce => ce.Cart)
+				.WithMany()
+				.HasForeignKey(ce => ce.CartId)
+				.OnDelete(DeleteBehavior.Restrict);
+
+			modelBuilder.Entity<CartEventIB190061>()
+				.HasOne(ce => ce.CartItem)
+				.WithMany()
+				.HasForeignKey(ce => ce.CartItemId)
+				.OnDelete(DeleteBehavior.SetNull);
+
+
+
+			modelBuilder.Entity<Category>().HasData(
            new Category { Id = 1, Name = "Elektronika", Description = "Elektronski ureðaji", IsActive = true, CreatedAt = DateTime.UtcNow },
            new Category { Id = 2, Name = "Knjige", Description = "Knjige i literatura", IsActive = true, CreatedAt = DateTime.UtcNow },
            new Category { Id = 3, Name = "Pametni telefoni", Description = "Mobilni telefoni", ParentCategoryId = 1, IsActive = true, CreatedAt = DateTime.UtcNow },

@@ -1,9 +1,13 @@
 import 'package:ecommerce_mobile/model/cart_provider.dart';
 import 'package:ecommerce_mobile/providers/auth_provider.dart';
+import 'package:ecommerce_mobile/providers/cartEvent_provider.dart';
+import 'package:ecommerce_mobile/providers/cartItem_provider.dart';
+import 'package:ecommerce_mobile/providers/cartModel_provider.dart';
 import 'package:ecommerce_mobile/providers/logged_product_provider.dart';
 import 'package:ecommerce_mobile/providers/product_provider.dart';
 import 'package:ecommerce_mobile/providers/product_type_provider.dart';
 import 'package:ecommerce_mobile/providers/unit_of_measure_provider.dart';
+import 'package:ecommerce_mobile/providers/user_provider.dart';
 import 'package:ecommerce_mobile/screens/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +21,14 @@ void main() {
     ChangeNotifierProvider<ProductTypeProvider>(
         create: (context) => ProductTypeProvider()),
     ChangeNotifierProvider<CartProvider>(create: (context) => CartProvider()),
+    ChangeNotifierProvider<CartitemProvider>(
+        create: (context) => CartitemProvider()),
+        ChangeNotifierProvider<CartEventProvider>(
+        create: (context) => CartEventProvider()),
+        ChangeNotifierProvider<UserProvider>(
+        create: (context) => UserProvider()),
+        ChangeNotifierProvider<Cart_Provider>(
+        create: (context) => Cart_Provider()),
   ], child: const MyLoginApp()));
 }
 

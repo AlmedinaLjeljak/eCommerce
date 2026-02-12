@@ -46,9 +46,8 @@ namespace eCommerce.Services
 			}
 			return MapToResponse(cart);
 		}
-
-		
 	
+
 		public override async Task<CartResponse?> GetByIdAsync(int id)
 		{
 			var entity = await _db.Carts
@@ -61,17 +60,16 @@ namespace eCommerce.Services
 
 			return MapToResponse(entity);
 		}
+		
+
 
 		public async Task<CartResponse> ClearCart(int userId)
 		{
-			var cart = await _db.Carts
-				.Include(c => c.CartItems)
+			var cart = await _db.Carts.Include(c => c.CartItems)
 				.FirstOrDefaultAsync(c => c.UserId == userId);
 
 			if (cart == null)
 				throw new Exception("Cart not found");
-
-			// Evidentiraj događaj za svaku stavku prije brisanja
 			foreach (var item in cart.CartItems.ToList()) // ToList da ne mijenjamo kolekciju tokom iteracije
 			{
 				await _cartEventService.AddCartEventAsync(
@@ -88,8 +86,9 @@ namespace eCommerce.Services
 
 			return MapToResponse(cart);
 		}
-
-		// Proceed to checkout – evidentira događaj za korpu, ne mjenja stavke
+		
+	
+	
 		public async Task<CartResponse> ProceedToCheckout(int userId)
 		{
 			var cart = await _db.Carts
@@ -109,6 +108,24 @@ namespace eCommerce.Services
 
 			return MapToResponse(cart);
 		}
+		public async Task<CartResponse> Checkout(int userId)
+		{
+			var cart = await _db.Carts.Include(x => x.CartItems).FirstOrDefaultAsync(x => x.UserId == userId);
+			if (cart == null)
+				throw new Exception("No");
+
+			await _cartEventService.AddCartEventAsync(
+				cart.Id,
+				null,
+				TipDogadjaja.Checkout,
+				cart.UserId
+				
+				);
+
+			return MapToResponse(cart);
+		}
+	
+
 
 
 	}

@@ -2,6 +2,7 @@ import 'package:ecommerce_mobile/layouts/master_screen.dart';
 import 'package:ecommerce_mobile/model/cart_provider.dart';
 import 'package:ecommerce_mobile/model/product.dart';
 import 'package:ecommerce_mobile/model/search_result.dart';
+import 'package:ecommerce_mobile/providers/cartModel_provider.dart';
 import 'package:ecommerce_mobile/providers/utils.dart';
 import 'package:ecommerce_mobile/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class ProductList extends StatefulWidget {
 
 class _ProductListState extends State<ProductList> {
   late ProductProvider productProvider;
-  late CartProvider cartProvider;
+  late Cart_Provider cartProvider;
 
   TextEditingController searchController = TextEditingController();
 
@@ -33,7 +34,7 @@ class _ProductListState extends State<ProductList> {
   void initState() {
     super.initState();
     productProvider = context.read<ProductProvider>();
-    cartProvider = context.read<CartProvider>();
+    cartProvider = context.read<Cart_Provider>();
     loadData();
   }
 
